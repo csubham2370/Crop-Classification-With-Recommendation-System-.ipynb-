@@ -1,6 +1,8 @@
-# Crop-Classification-With-Recommendation-System-.ipynb-
-
-## This is our Major Project
+# This is our Major Project
+## Crop-Classification-With-Recommendation-System-.ipynb-
+## Atfirst you watch this video it's help for your Machine Learning journey:
+https://youtu.be/U_oJqcyc0eI?si=f9upXvdeh5FLg7gJ
+* If you have other suggestions please tell me.
 ## Here are the steps typically involved in a machine learning project:
 
 1. **Define the Problem**: Clearly define the problem you want to solve and determine if machine learning is the appropriate approach.
