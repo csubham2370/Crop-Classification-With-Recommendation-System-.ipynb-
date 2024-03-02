@@ -81,7 +81,7 @@ In summary, these libraries are essential for data manipulation, analysis, visua
 
 So, overall, this code allows the user to upload a file from their local system to a Google Colab notebook environment, and the uploaded file(s) information is stored in the `uploaded` variable for further 
   processing within the notebook.
-
+## ---------------------------------------------------------
 * crop = pd.read_csv('modified_crop.csv')
 * crop . Explain this code
 ## This code snippet appears to be reading a CSV file named `'modified_crop.csv'` using the Pandas library in Python. Here's an explanation of each part of the code:
