@@ -110,3 +110,15 @@ In summary, this code reads the contents of a CSV file named `'modified_crop.csv
 By using `crop.shape`, you can quickly check the size of your DataFrame, which is especially useful when dealing with large datasets or when you need to understand the structure of the data you're working with.
 
 For example, if you run `crop.shape` and it returns `(100, 5)`, it means that the DataFrame `crop` has 100 rows and 5 columns.
+## -------------------------------------------------------------------------------------------------
+* crop.info()
+ ## The code `crop.info()` is used to display concise information about the DataFrame `crop`. Here's an explanation:
+
+1. `crop`: This refers to the DataFrame object that was created earlier by reading a CSV file using Pandas.
+
+2. `.info()`: This is a method provided by Pandas for DataFrame objects. When called, it provides a concise summary of the DataFrame's structure and content.
+
+   - This summary includes information such as the total number of entries (rows), the number of columns, the data type of each column, and the number of non-null values in each column.
+   - Additionally, it provides memory usage information, which can be helpful for understanding the memory footprint of the DataFrame.
+
+By using `crop.info()`, you can quickly get an overview of the DataFrame, including its size, data types, and missing values, which is useful for initial data exploration and understanding the dataset's characteristics.
