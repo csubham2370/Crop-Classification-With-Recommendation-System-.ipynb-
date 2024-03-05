@@ -223,4 +223,108 @@ The code `crop2.isnull().any()` checks if there are any missing values (null val
 
 Therefore, `crop2.isnull().any()` returns a Series where each entry represents whether there are any missing values in the corresponding column of the DataFrame `crop2`. If the entry is `True`, it means that the column contains at least one missing value; otherwise, it's `False`.
 ## ----------------------------------------------------------------------------
-## 
+## The `describe()` function in Pandas is used to generate descriptive statistics of the numerical columns in a DataFrame. Here's what the `crop2.describe()` code does:
+
+1. `crop2`: This refers to the DataFrame object that was created earlier, presumably after removing duplicate rows from `crop1` and handling missing values.
+
+2. `describe()`: This method is applied to the DataFrame `crop2`. It computes summary statistics for each numerical column in the DataFrame, including count, mean, standard deviation, minimum, maximum, and percentiles.
+
+   - By default, `describe()` only considers numerical columns. It excludes non-numeric columns from the summary statistics.
+
+The output of `crop2.describe()` will be a DataFrame where each row represents a summary statistic, and each column represents a numerical column in the original DataFrame `crop2`. This summary statistics can provide insights into the distribution and spread of values in the dataset, helping with data exploration and analysis.
+## ----------------------------------------------------------------------------
+##The code `corr = crop2.corr()` calculates the correlation coefficients between pairs of numeric columns in the DataFrame `crop2`. Here's a breakdown of what it does:
+
+1. `crop2`: This refers to the DataFrame object that was created earlier, presumably after removing duplicate rows from `crop1` and handling missing values.
+
+2. `corr()`: This method is applied to the DataFrame `crop2`. It calculates the pairwise correlation between all numerical columns in the DataFrame.
+
+   - The resulting DataFrame `corr` will have the same number of rows and columns as `crop2`, with each cell containing the correlation coefficient between the corresponding pair of columns.
+   - The correlation coefficient ranges from -1 to 1:
+     - A correlation coefficient of 1 indicates a perfect positive correlation, meaning that as one variable increases, the other variable also increases proportionally.
+     - A correlation coefficient of -1 indicates a perfect negative correlation, meaning that as one variable increases, the other variable decreases proportionally.
+     - A correlation coefficient of 0 indicates no correlation between the variables.
+
+The `corr()` method is commonly used to identify relationships between variables in a dataset. High positive or negative correlation coefficients can indicate strong relationships between variables, while a correlation coefficient close to 0 suggests little to no relationship. These correlation coefficients can be further analyzed and interpreted to gain insights into the dataset.
+## ----------------------------------------------------------------------------
+## The code you provided uses Seaborn to create a heatmap visualization of the correlation matrix `corr`. Here's what each part of the code does:
+
+1. `import seaborn as sns`: This imports the Seaborn library, commonly used for statistical data visualization in Python.
+
+2. `sns.heatmap(corr, annot=True, cbar=True, cmap='coolwarm')`: This line creates a heatmap using Seaborn's `heatmap()` function.
+
+   - `corr`: This is the correlation matrix DataFrame that was previously calculated using the `corr()` method on the DataFrame `crop2`.
+   
+   - `annot=True`: This parameter adds numerical annotations to each cell of the heatmap, displaying the correlation coefficients.
+   
+   - `cbar=True`: This parameter adds a color bar on the side of the heatmap, indicating the mapping between colors and correlation values.
+   
+   - `cmap='coolwarm'`: This parameter sets the colormap for the heatmap. In this case, it uses the 'coolwarm' colormap, which ranges from cool (blue) for negative correlations to warm (red) for positive correlations.
+
+By visualizing the correlation matrix as a heatmap, you can easily identify patterns and relationships between variables in the dataset. Positive correlations will appear in warm colors, negative correlations in cool colors, and no correlation in neutral colors. The annotations provide the exact correlation coefficients, making it easier to interpret the heatmap.
+## ----------------------------------------------------------------------------
+## The code `crop2['label'].value_counts()` calculates the frequency of each unique value in the 'label' column of the DataFrame `crop2`. Here's what each part of the code does:
+
+1. `crop2`: This refers to the DataFrame object that was created earlier, presumably after removing duplicate rows from `crop1` and handling missing values.
+
+2. `['label']`: This specifies the column 'label' of the DataFrame `crop2`. It selects only the 'label' column for further operations.
+
+3. `value_counts()`: This method is applied to the 'label' column of `crop2`. It counts the occurrences of each unique value in the 'label' column and returns a Series where the index contains unique values and the values contain their corresponding frequencies.
+
+The output of `crop2['label'].value_counts()` will be a Series where each unique label in the 'label' column of `crop2` is listed along with the count of occurrences of that label in the dataset. This information is useful for understanding the distribution of different labels in the dataset and can be valuable for various analytical purposes.
+
+## ----------------------------------------------------------------------------
+## The code you provided utilizes Matplotlib and Seaborn to create a distribution plot (histogram) of the values in the 'N' column of the DataFrame `crop2`. Here's a breakdown of each part of the code:
+
+1. `import matplotlib.pyplot as plt`: This imports the Matplotlib library under the alias `plt`, which is a common convention.
+
+2. `sns.distplot(crop2['N'])`: This line creates a distribution plot using Seaborn's `distplot()` function.
+
+   - `crop2['N']`: This specifies the 'N' column of the DataFrame `crop2`, indicating that we want to plot the distribution of values in this column.
+   
+   - Seaborn's `distplot()` function combines a histogram with a kernel density estimate (KDE) plot to provide a visual representation of the distribution of the data.
+
+3. `plt.show()`: This line displays the plot using Matplotlib's `show()` function. It's necessary to explicitly call this function to render the plot.
+
+By executing this code, you'll generate a distribution plot showing the distribution of values in the 'N' column of the DataFrame `crop2`. This visualization helps in understanding the distribution of values and identifying any patterns or outliers present in the data.
+
+## ----------------------------------------------------------------------------
+##
+crop_dict = {
+    'rice': 1,
+    'maize': 2,
+    'jute': 3,
+    'cotton': 4,
+    'coconut': 5,
+    'papaya': 6,
+    'orange': 7,
+    'apple': 8,
+    'muskmelon': 9,
+    'watermelon': 10,
+    'grapes': 11,
+    'mango': 12,
+    'banana': 13,
+    'pomegranate': 14,
+    'lentil': 15,
+    'blackgram': 16,
+    'mungbean': 17,
+    'mothbeans': 18,
+    'pigeonpeas': 19,
+    'kidneybeans': 20,
+    'chickpea': 21,
+    'coffee': 22
+}
+crop2['crop_num']=crop1['label'].map(crop_dict)
+
+
+The provided code snippet creates a new column named 'crop_num' in the DataFrame `crop2`. The values in this column represent numerical labels corresponding to the crop names from the 'label' column of `crop1`. Here's how the code works:
+
+1. `crop_dict`: This is a dictionary that maps crop names to numerical labels. For example, 'rice' is mapped to 1, 'maize' to 2, and so on.
+
+2. `crop1['label'].map(crop_dict)`: This line uses the `map()` function to apply the mapping defined in `crop_dict` to the 'label' column of `crop1`. 
+
+   - For each value in the 'label' column of `crop1`, the corresponding numerical label from `crop_dict` is retrieved and assigned to the corresponding row in the new 'crop_num' column.
+
+3. `crop2['crop_num'] = ...`: This assigns the Series obtained from `crop1['label'].map(crop_dict)` to the new column 'crop_num' in the DataFrame `crop2`.
+
+After executing this code, the DataFrame `crop2` will have a new column named 'crop_num', where each value represents the numerical label corresponding to the crop name in the 'label' column of `crop1`. This can be useful for numerical analysis and machine learning tasks where numeric representations of categorical variables are required.
