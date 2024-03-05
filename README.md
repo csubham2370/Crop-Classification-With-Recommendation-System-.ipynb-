@@ -290,31 +290,8 @@ By executing this code, you'll generate a distribution plot showing the distribu
 
 ## ----------------------------------------------------------------------------
 ##
-crop_dict = {
-    'rice': 1,
-    'maize': 2,
-    'jute': 3,
-    'cotton': 4,
-    'coconut': 5,
-    'papaya': 6,
-    'orange': 7,
-    'apple': 8,
-    'muskmelon': 9,
-    'watermelon': 10,
-    'grapes': 11,
-    'mango': 12,
-    'banana': 13,
-    'pomegranate': 14,
-    'lentil': 15,
-    'blackgram': 16,
-    'mungbean': 17,
-    'mothbeans': 18,
-    'pigeonpeas': 19,
-    'kidneybeans': 20,
-    'chickpea': 21,
-    'coffee': 22
-}
-crop2['crop_num']=crop1['label'].map(crop_dict)
+![image](https://github.com/csubham2370/Crop-Classification-With-Recommendation-System-.ipynb-/assets/144363196/ae127603-5c50-4d5a-9d6c-4c5cd170aa5d)
+
 
 
 The provided code snippet creates a new column named 'crop_num' in the DataFrame `crop2`. The values in this column represent numerical labels corresponding to the crop names from the 'label' column of `crop1`. Here's how the code works:
