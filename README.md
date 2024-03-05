@@ -305,3 +305,14 @@ The provided code snippet creates a new column named 'crop_num' in the DataFrame
 3. `crop2['crop_num'] = ...`: This assigns the Series obtained from `crop1['label'].map(crop_dict)` to the new column 'crop_num' in the DataFrame `crop2`.
 
 After executing this code, the DataFrame `crop2` will have a new column named 'crop_num', where each value represents the numerical label corresponding to the crop name in the 'label' column of `crop1`. This can be useful for numerical analysis and machine learning tasks where numeric representations of categorical variables are required.
+
+## ----------------------------------------------------------------------------
+## The code `crop2['crop_num'].value_counts()` calculates the frequency of each unique value in the 'crop_num' column of the DataFrame `crop2`. Here's what each part of the code does:
+
+1. `crop2`: This refers to the DataFrame object that was created earlier, presumably after removing duplicate rows from `crop1`, handling missing values, and adding the 'crop_num' column.
+
+2. `['crop_num']`: This specifies the 'crop_num' column of the DataFrame `crop2`. It selects only the 'crop_num' column for further operations.
+
+3. `value_counts()`: This method is applied to the 'crop_num' column of `crop2`. It counts the occurrences of each unique value in the 'crop_num' column and returns a Series where the index contains unique values (crop numerical labels) and the values contain their corresponding frequencies.
+
+The output of `crop2['crop_num'].value_counts()` will be a Series where each unique numerical label in the 'crop_num' column of `crop2` is listed along with the count of occurrences of that label in the dataset. This information is useful for understanding the distribution of different crops in the dataset based on their numerical labels.
