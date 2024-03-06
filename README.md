@@ -316,3 +316,128 @@ After executing this code, the DataFrame `crop2` will have a new column named 'c
 3. `value_counts()`: This method is applied to the 'crop_num' column of `crop2`. It counts the occurrences of each unique value in the 'crop_num' column and returns a Series where the index contains unique values (crop numerical labels) and the values contain their corresponding frequencies.
 
 The output of `crop2['crop_num'].value_counts()` will be a Series where each unique numerical label in the 'crop_num' column of `crop2` is listed along with the count of occurrences of that label in the dataset. This information is useful for understanding the distribution of different crops in the dataset based on their numerical labels.
+
+## ----------------------------------------------------------------------------
+## In this code  we preparing the data for machine learning by separating features (X) and the target variable (y) from the DataFrame `crop2`.
+
+Here's what each part of the code does:
+
+1. `X = crop2.drop(['crop_num','label'], axis=1)`: This line creates the feature matrix `X` by dropping the 'crop_num' and 'label' columns from the DataFrame `crop2`. 
+
+   - `drop()` is used to remove specific columns from the DataFrame. The `axis=1` argument specifies that the operation should be performed along columns.
+   - The resulting DataFrame `X` contains all the columns from `crop2` except for 'crop_num' and 'label', which are dropped.
+
+2. `y = crop2['crop_num']`: This line creates the target variable `y` by selecting the 'crop_num' column from the DataFrame `crop2`.
+
+   - `y` now contains the numerical labels corresponding to the crops.
+
+After executing this code, you have prepared the feature matrix `X`, which contains all the features (attributes) of the dataset except for the target variable 'crop_num' and 'label', and the target variable `y`, which contains the numerical labels of the crops. This separation allows you to use `X` and `y` for training machine learning models where `X` represents the input features and `y` represents the target variable to be predicted.
+
+## ----------------------------------------------------------------------------
+## The line `from sklearn.model_selection import train_test_split` imports the `train_test_split` function from the `sklearn.model_selection` module. This function is commonly used in machine learning to split datasets into training and testing sets. Here's what each part of the code does:
+
+1. `sklearn`: This refers to scikit-learn, a popular machine learning library in Python.
+
+2. `model_selection`: This is a submodule within scikit-learn that contains various tools for model selection and evaluation.
+
+3. `train_test_split`: This is a function provided by scikit-learn for splitting datasets into random train and test subsets.
+
+Using `train_test_split`, you can divide your dataset into two separate sets: one for training your model and the other for testing its performance. This separation helps evaluate the model's performance on unseen data, which is crucial for assessing its generalization capability.
+
+Typically, you would use `train_test_split` in conjunction with machine learning algorithms to build predictive models. The function allows you to specify the proportion of the dataset to allocate for training and testing, as well as any other desired parameters such as random state for reproducibility.
+
+## ----------------------------------------------------------------------------
+## The code `y.shape` retrieves the shape of the target variable `y`. 
+
+Here's what each part of the code does:
+
+1. `y`: This is the target variable that was previously defined. In this context, `y` contains the numerical labels corresponding to the crops.
+
+2. `shape`: This is an attribute of arrays in NumPy (and thus Pandas Series), which returns a tuple representing the shape of the array. For a one-dimensional array like `y`, the shape tuple contains only one element representing the length of the array.
+
+Therefore, `y.shape` returns the shape of the target variable `y`, which is a tuple containing one element representing the number of elements (rows) in `y`. The number of elements in `y` corresponds to the number of samples or instances in your dataset.
+
+## ----------------------------------------------------------------------------
+## The line `X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)` uses the `train_test_split` function from scikit-learn to split the dataset into training and testing sets. Here's what each part of the code does:
+
+1. `X`: This represents the feature matrix, containing the input features (attributes) of the dataset.
+
+2. `y`: This represents the target variable, containing the corresponding labels (in this case, numerical labels for the crops).
+
+3. `test_size=0.2`: This parameter specifies the proportion of the dataset to include in the testing split. Here, it's set to 0.2, meaning that 20% of the dataset will be reserved for testing, while the remaining 80% will be used for training.
+
+4. `random_state=42`: This parameter sets the random seed used for randomizing the data before splitting. Setting a random seed ensures reproducibility, meaning that running the code multiple times will produce the same split each time. The specific value of 42 is arbitrary; you can use any integer value.
+
+5. `X_train, X_test, y_train, y_test`: These are the variables that will hold the resulting splits of the dataset.
+
+   - `X_train`: This will contain the training set of input features.
+   
+   - `X_test`: This will contain the testing set of input features.
+   
+   - `y_train`: This will contain the corresponding training labels.
+   
+   - `y_test`: This will contain the corresponding testing labels.
+
+After executing this line of code, you will have four sets of data: `X_train` (training features), `X_test` (testing features), `y_train` (training labels), and `y_test` (testing labels), which you can use to train and evaluate machine learning models.
+
+## ----------------------------------------------------------------------------
+## The code `X_train.shape` retrieves the shape of the training feature matrix `X_train`.
+
+Here's what each part of the code does:
+
+1. `X_train`: This variable contains the training set of input features. It was obtained as a result of splitting the original feature matrix `X` using the `train_test_split` function.
+
+2. `shape`: This is an attribute of arrays in NumPy (and thus Pandas DataFrames), which returns a tuple representing the shape of the array. For a two-dimensional array like `X_train`, the shape tuple contains two elements: the number of rows (samples) and the number of columns (features).
+
+Therefore, `X_train.shape` returns the shape of the training feature matrix `X_train`, which is a tuple containing two elements: the number of rows (samples) and the number of columns (features). This information tells you the size of the training set and the number of features present in each sample.
+
+## ----------------------------------------------------------------------------
+## The code `X_test.shape` retrieves the shape of the testing feature matrix `X_test`.
+
+Here's what each part of the code does:
+
+1. `X_test`: This variable contains the testing set of input features. It was obtained as a result of splitting the original feature matrix `X` using the `train_test_split` function.
+
+2. `shape`: This is an attribute of arrays in NumPy (and thus Pandas DataFrames), which returns a tuple representing the shape of the array. For a two-dimensional array like `X_test`, the shape tuple contains two elements: the number of rows (samples) and the number of columns (features).
+
+Therefore, `X_test.shape` returns the shape of the testing feature matrix `X_test`, which is a tuple containing two elements: the number of rows (samples) and the number of columns (features). This information tells you the size of the testing set and the number of features present in each sample.
+
+## ----------------------------------------------------------------------------
+## The provided code snippet uses scikit-learn's `MinMaxScaler` to scale the feature matrices `X_train` and `X_test` using min-max scaling. Here's what each part of the code does:
+
+1. `from sklearn.preprocessing import MinMaxScaler`: This line imports the `MinMaxScaler` class from scikit-learn's preprocessing module. `MinMaxScaler` is used to scale features to a specified range (by default, between 0 and 1).
+
+2. `ms = MinMaxScaler()`: This line creates an instance of the `MinMaxScaler` class, which will be used to scale the features.
+
+3. `X_train = ms.fit_transform(X_train)`: This line fits the `MinMaxScaler` to the training data (`X_train`) and then transforms it. 
+
+   - The `fit_transform()` method computes the minimum and maximum values of each feature in the training set and then scales the training data accordingly.
+
+4. `X_test = ms.transform(X_test)`: This line transforms the testing data (`X_test`) using the same scaling parameters learned from the training data.
+
+   - The `transform()` method applies the scaling parameters learned from the training data to the testing data, ensuring that both the training and testing data are scaled consistently.
+
+After executing these lines of code, both `X_train` and `X_test` will be scaled versions of the original feature matrices, with features scaled to the same range (0 to 1). This preprocessing step is commonly used to ensure that all features have similar scales, which can improve the performance of certain machine learning algorithms.
+* link of geeks for geeks: https://www.geeksforgeeks.org/data-pre-processing-wit-sklearn-using-standard-and-minmax-scaler/
+
+## ----------------------------------------------------------------------------
+## The provided code snippet uses scikit-learn's `StandardScaler` to scale the feature matrices `X_train` and `X_test` using standardization. Here's what each part of the code does:
+
+1. `from sklearn.preprocessing import StandardScaler`: This line imports the `StandardScaler` class from scikit-learn's preprocessing module. `StandardScaler` is used to standardize features by removing the mean and scaling to unit variance.
+
+2. `sc = StandardScaler()`: This line creates an instance of the `StandardScaler` class, which will be used to standardize the features.
+
+3. `sc.fit(X_train)`: This line fits the `StandardScaler` to the training data (`X_train`).
+
+   - The `fit()` method computes the mean and standard deviation of each feature in the training set.
+
+4. `X_train = sc.transform(X_train)`: This line transforms the training data (`X_train`) using the scaling parameters learned from the training data.
+
+   - The `transform()` method applies the standardization transformation to the training data, centering the data around zero and scaling it to have unit variance.
+
+5. `X_test = sc.transform(X_test)`: This line transforms the testing data (`X_test`) using the same scaling parameters learned from the training data.
+
+   - The `transform()` method applies the same standardization transformation to the testing data as was applied to the training data, ensuring that both the training and testing data are standardized consistently.
+
+After executing these lines of code, both `X_train` and `X_test` will be standardized versions of the original feature matrices, with each feature having a mean of 0 and a standard deviation of 1. Standardization is a common preprocessing step used to ensure that features are centered around zero and have similar scales, which can improve the performance of certain machine learning algorithms.
+* geeks for geeks link: https://www.geeksforgeeks.org/what-is-standardization-in-machine-learning/
