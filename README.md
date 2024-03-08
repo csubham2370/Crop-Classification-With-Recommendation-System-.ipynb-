@@ -497,3 +497,40 @@ In this example:
 - We train the model on the training data using `fit`.
 - We make predictions on the test data using `predict`.
 - Finally, we evaluate the model's performance using accuracy and classification report.
+
+  * Youtube video link: https://www.youtube.com/watch?v=r8OjlgWpAI0
+  * web link: https://www.javatpoint.com/logistic-regression-in-machine-learning
+  * Youtube video with code example link: https://www.youtube.com/watch?v=zM4VZR0px8E
+    Certainly! Let's break down the provided code snippet step by step:
+
+1. **Importing Logistic Regression**: 
+   ```python
+   from sklearn.linear_model import LogisticRegression
+   ```
+   - This line imports the `LogisticRegression` class from the `sklearn.linear_model` module. `LogisticRegression` is a classification algorithm used for binary classification tasks.
+
+2. **Instantiating the Logistic Regression Model**: 
+   ```python
+   model = LogisticRegression()
+   ```
+   - Here, an instance of the Logistic Regression model is created and assigned to the variable `model`.
+
+3. **Training the Model**: 
+   ```python
+   model.fit(X_train, y_train)
+   ```
+   - This line trains the logistic regression model using the `fit()` method. `X_train` contains the feature matrix of the training set, while `y_train` contains the corresponding target labels.
+
+4. **Predicting on the Training Data**:
+   ```python
+   model.predict(X_train)
+   ```
+   - This line makes predictions on the training data using the trained model. However, the predictions are not stored or used further in the code.
+
+5. **Printing the Accuracy**: 
+   ```python
+   print("LogisticRegression accuracy: {:.2f}".format(model.score(X_test, y_test)))
+   ```
+   - Here, the accuracy of the logistic regression model on the test data is calculated using the `score()` method. The accuracy is then formatted to display two digits after the decimal point using the `.2f` format specifier in the `.format()` method. Finally, the accuracy is printed to the console.
+
+Overall, this code snippet trains a logistic regression model on the training data, makes predictions on the test data, calculates the accuracy of the model on the test data, and prints the accuracy to the console with two digits after the decimal point.
