@@ -619,3 +619,378 @@ Explanation:
 - `model.predict(X_test)`: This line predicts the target labels for the test data, but the predictions are not being stored or used further.
 
 - `print("Naive Bayes accuracy: {:.2f}".format(model.score(X_test, y_test)))`: This line calculates the accuracy of the model on the test data using the `score()` method, which returns the mean accuracy on the given test data and labels. The accuracy is then formatted to display two digits after the decimal point using the `"{:.2f}"` format specifier in the `format()` method, and it's printed to the console.
+## --------------------------------------------------------------------------------------------------------------
+# Random forest :-
+* Random Forest is an ensemble learning method that operates by constructing a multitude of decision trees during training and outputs the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees. Below is an explanation of how to train a Random Forest model using scikit-learn:
+
+1. **Import the necessary libraries**: First, import the RandomForestClassifier from scikit-learn, along with any other libraries you'll need.
+
+2. **Instantiate the Random Forest model**: Create an instance of the RandomForestClassifier, specifying hyperparameters if necessary.
+
+3. **Fit the model to the training data**: Use the fit() method to train the model on the training data.
+
+4. **Predict on the test data**: After the model is trained, use the predict() method to make predictions on the test data.
+
+5. **Evaluate the model**: Evaluate the performance of the model using appropriate metrics.
+
+Here's a code example:
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# Instantiate the Random Forest classifier
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Fit the model to the training data
+rf_model.fit(X_train, y_train)
+
+# Predict on the test data
+y_pred = rf_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print("Random Forest accuracy:", accuracy)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+```
+
+Explanation:
+
+- `from sklearn.ensemble import RandomForestClassifier`: This imports the RandomForestClassifier from scikit-learn, which is used for classification with Random Forests.
+
+- `rf_model = RandomForestClassifier(n_estimators=100, random_state=42)`: This instantiates the RandomForestClassifier with 100 trees (`n_estimators`) and a random state of 42 for reproducibility.
+
+- `rf_model.fit(X_train, y_train)`: This fits the Random Forest model to the training data.
+
+- `y_pred = rf_model.predict(X_test)`: This predicts the target labels for the test data.
+
+- `accuracy = accuracy_score(y_test, y_pred)`: This calculates the accuracy of the model on the test data.
+
+- `print(classification_report(y_test, y_pred))`: This prints a classification report, including precision, recall, F1-score, and support for each class, based on the predictions made by the model.
+
+   * Youtube video link: https://www.youtube.com/watch?v=DXqxXe3rep0
+  * web link: https://www.javatpoint.com/machine-learning-random-forest-algorithm
+  * Youtube video with code example link: https://www.youtube.com/watch?v=ok2s1vV9XW0
+
+* The provided code snippet trains a Random Forest classifier using scikit-learn's `RandomForestClassifier`, makes predictions on the training data, and prints the accuracy of the model on the test data. Let's break down the code:
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# Instantiate the Random Forest classifier
+model = RandomForestClassifier()
+
+# Fit the model to the training data
+model.fit(X_train, y_train)
+
+# Predict on the training data (but predictions are not being stored or used further)
+model.predict(X_train)
+
+# Print the accuracy of the Random Forest model on the test data
+print("Random Forest: {:.2f}".format(model.score(X_test, y_test)))
+```
+
+Explanation:
+
+- `from sklearn.ensemble import RandomForestClassifier`: This imports the Random Forest classifier from scikit-learn.
+
+- `model = RandomForestClassifier()`: This instantiates the Random Forest classifier with default parameters.
+
+- `model.fit(X_train, y_train)`: This fits the Random Forest model to the training data, where `X_train` is the feature matrix and `y_train` is the target variable.
+
+- `model.predict(X_train)`: This line predicts the target labels for the training data, but the predictions are not being stored or used further.
+
+- `print("Random Forest: {:.2f}".format(model.score(X_test, y_test)))`: This line calculates the accuracy of the model on the test data using the `score()` method, which returns the mean accuracy on the given test data and labels. The accuracy is then formatted to display two digits after the decimal point using the `"{:.2f}"` format specifier in the `format()` method, and it's printed to the console.
+
+## --------------------------------------------------------------------------------------------------------------
+# K-Nearest Neighbors:-
+* K-Nearest Neighbors (KNN) is a simple and effective supervised learning algorithm used for classification and regression tasks. It works by finding the K nearest data points in the training set to the new data point and using them to make predictions.
+
+Here's how to train a KNN classifier using scikit-learn:
+
+1. **Import the necessary libraries**: Import the KNeighborsClassifier class from scikit-learn, along with any other libraries you'll need.
+
+2. **Instantiate the KNN model**: Create an instance of the KNeighborsClassifier, specifying the number of neighbors (K) and other hyperparameters.
+
+3. **Fit the model to the training data**: Use the fit() method to train the model on the training data.
+
+4. **Predict on the test data**: After the model is trained, use the predict() method to make predictions on the test data.
+
+5. **Evaluate the model**: Evaluate the performance of the model using appropriate metrics.
+
+Here's an example code to train a KNN classifier:
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# Instantiate the KNN classifier
+knn_model = KNeighborsClassifier(n_neighbors=5)
+
+# Fit the model to the training data
+knn_model.fit(X_train, y_train)
+
+# Predict on the test data
+y_pred = knn_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print("KNN accuracy:", accuracy)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+```
+
+Explanation:
+
+- `from sklearn.neighbors import KNeighborsClassifier`: This imports the KNeighborsClassifier from scikit-learn, which is used for classification with KNN.
+
+- `knn_model = KNeighborsClassifier(n_neighbors=5)`: This instantiates the KNeighborsClassifier with 5 neighbors (K).
+
+- `knn_model.fit(X_train, y_train)`: This fits the KNN model to the training data.
+
+- `y_pred = knn_model.predict(X_test)`: This predicts the target labels for the test data.
+
+- `accuracy = accuracy_score(y_test, y_pred)`: This calculates the accuracy of the model on the test data.
+
+- `print(classification_report(y_test, y_pred))`: This prints a classification report, including precision, recall, F1-score, and support for each class, based on the predictions made by the model.
+
+  * Youtube video link: https://www.youtube.com/results?search_query=knn+algorithm+in+machine+learning
+  * web link: https://www.javatpoint.com/k-nearest-neighbor-algorithm-for-machine-learning
+  * Youtube video with code example link: https://www.youtube.com/watch?v=CQveSaMyEwM
+
+* The provided code snippet trains a K-Nearest Neighbors (KNN) classifier using scikit-learn's `KNeighborsClassifier`, makes predictions on the training data, and prints the accuracy of the model on the test data. Let's break down the code:
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+
+# Instantiate the K-Nearest Neighbors classifier
+model = KNeighborsClassifier()
+
+# Fit the model to the training data
+model.fit(X_train, y_train)
+
+# Predict on the training data (but predictions are not being stored or used further)
+model.predict(X_train)
+
+# Print the accuracy of the K-Nearest Neighbors model on the test data
+print("K-Nearest Neighbors: {:.2f}".format(model.score(X_test, y_test)))
+```
+
+Explanation:
+
+- `from sklearn.neighbors import KNeighborsClassifier`: This imports the KNeighborsClassifier from scikit-learn.
+
+- `model = KNeighborsClassifier()`: This instantiates the KNeighborsClassifier with default parameters.
+
+- `model.fit(X_train, y_train)`: This fits the KNN model to the training data, where `X_train` is the feature matrix and `y_train` is the target variable.
+
+- `model.predict(X_train)`: This line predicts the target labels for the training data, but the predictions are not being stored or used further.
+
+- `print("K-Nearest Neighbors: {:.2f}".format(model.score(X_test, y_test)))`: This line calculates the accuracy of the model on the test data using the `score()` method, which returns the mean accuracy on the given test data and labels. The accuracy is then formatted to display two digits after the decimal point using the `"{:.2f}"` format specifier in the `format()` method, and it's printed to the console.
+
+## --------------------------------------------------------------------------------------------------------------
+# Decision tree:-
+* Decision Trees are versatile supervised learning algorithms used for both classification and regression tasks. They work by partitioning the feature space into regions, and at each node of the tree, a decision is made based on the value of a feature to determine the next node to traverse.
+
+Here's how to train a Decision Tree classifier using scikit-learn:
+
+1. **Import the necessary libraries**: Import the DecisionTreeClassifier class from scikit-learn, along with any other libraries you'll need.
+
+2. **Instantiate the Decision Tree model**: Create an instance of the DecisionTreeClassifier, specifying hyperparameters if necessary.
+
+3. **Fit the model to the training data**: Use the fit() method to train the model on the training data.
+
+4. **Predict on the test data**: After the model is trained, use the predict() method to make predictions on the test data.
+
+5. **Evaluate the model**: Evaluate the performance of the model using appropriate metrics.
+
+Here's an example code to train a Decision Tree classifier:
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# Instantiate the Decision Tree classifier
+dt_model = DecisionTreeClassifier()
+
+# Fit the model to the training data
+dt_model.fit(X_train, y_train)
+
+# Predict on the test data
+y_pred = dt_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print("Decision Tree accuracy:", accuracy)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+```
+
+Explanation:
+
+- `from sklearn.tree import DecisionTreeClassifier`: This imports the DecisionTreeClassifier from scikit-learn.
+
+- `dt_model = DecisionTreeClassifier()`: This instantiates the DecisionTreeClassifier with default parameters.
+
+- `dt_model.fit(X_train, y_train)`: This fits the Decision Tree model to the training data.
+
+- `y_pred = dt_model.predict(X_test)`: This predicts the target labels for the test data.
+
+- `accuracy = accuracy_score(y_test, y_pred)`: This calculates the accuracy of the model on the test data.
+
+- `print(classification_report(y_test, y_pred))`: This prints a classification report, including precision, recall, F1-score, and support for each class, based on the predictions made by the model.
+
+  * Youtube video link: https://www.youtube.com/watch?v=mvveVcbHynE
+  * web link: https://www.javatpoint.com/machine-learning-decision-tree-classification-algorithm
+  * Youtube video with code example link: https://www.youtube.com/watch?v=PHxYNGo8NcI
+
+## --------------------------------------------------------------------------------------------------------------
+# Barplot:-
+  Sure, here's an explanation of each line of code:
+
+1. ```python
+   import matplotlib.pyplot as plt
+   import seaborn as sns
+   ```
+   - These lines import the matplotlib library for basic plotting functionalities and the seaborn library for statistical data visualization.
+
+2. ```python
+   accuracies = []
+   ```
+   - This line initializes an empty list called `accuracies`. This list will store the accuracy scores of each classifier.
+
+3. ```python
+   from sklearn.metrics import accuracy_score
+   ```
+   - This line imports the `accuracy_score` function from the `sklearn.metrics` module. This function is used to compute the accuracy of the classification model.
+
+4. ```python
+   classifiers = {
+       "Logistic Regression": LogisticRegression(),
+       "Naive Bayes": GaussianNB(),
+       "Random Forest": RandomForestClassifier(),
+       "K-Nearest Neighbors": KNeighborsClassifier(),
+       "Decision Tree": DecisionTreeClassifier()
+   }
+   ```
+   - This dictionary `classifiers` contains the names of the classifiers as keys and the corresponding classifier objects as values. Each classifier is instantiated with its default parameters.
+
+5. ```python
+   for name, md in classifiers.items():
+       md.fit(X_train, y_train)
+       y_pred = md.predict(X_test)
+       acc = accuracy_score(y_test, y_pred)
+       accuracies.append(acc)
+   ```
+   - This loop iterates over each item (classifier name and classifier object) in the `classifiers` dictionary.
+   - Inside the loop, each classifier is trained on the training data (`X_train` and `y_train`) using the `fit()` method.
+   - Then, predictions are made on the test data (`X_test`) using the `predict()` method, and the accuracy of the classifier is calculated using the `accuracy_score` function.
+   - The accuracy score is appended to the `accuracies` list.
+
+6. ```python
+   plt.figure(figsize=[10,5], dpi=100)
+   plt.title('Accuracy Comparison')
+   plt.xlabel('Accuracy')
+   plt.ylabel('Algorithm')
+   ```
+   - These lines set up the figure for plotting. They specify the figure size (`figsize`), the title of the plot, and labels for the x-axis and y-axis.
+
+7. ```python
+   sns.barplot(x=accuracies, y=list(classifiers), palette='dark')
+   ```
+   - This line creates a horizontal bar plot using seaborn's `barplot` function. 
+   - The accuracy scores (`accuracies`) are plotted on the x-axis, and the names of the classifiers (`list(classifiers)`) are plotted on the y-axis.
+   - The `palette='dark'` argument sets the color palette for the plot.
+
+8. ```python
+   plt.show() 
+   ```
+   - This line displays the plot.
+     * output:-
+     ![image](https://github.com/csubham2370/Crop-Classification-With-Recommendation-System-.ipynb-/assets/144363196/1e93304d-fc2b-45dd-a2a2-b08fa9d178fa)
+
+  
+  ## --------------------------------------------------------------------------------------------------------------
+  ## We select Naive Bayes because it's prediction is higher then among of all.
+  Certainly! Here's the breakdown of each line of code:
+
+1. ```python
+   nb = GaussianNB()
+   ```
+   - This line creates an instance of the Gaussian Naive Bayes (GaussianNB) classifier from scikit-learn. 
+   - `nb` is a variable name chosen by the user to refer to this particular instance of the classifier.
+
+2. ```python
+   nb.fit(X_train, y_train)
+   ```
+   - This line trains (fits) the Gaussian Naive Bayes model on the training data.
+   - `X_train` is the feature matrix containing the features of the training samples.
+   - `y_train` is the target variable or labels corresponding to the training samples. 
+   - This method modifies the `nb` object in place to capture the statistical properties of the training data necessary for making predictions.
+
+3. ```python
+   y_pred = nb.predict(X_test)
+   ```
+   - This line makes predictions on the test data using the trained Gaussian Naive Bayes model.
+   - `X_test` is the feature matrix containing the features of the test samples.
+   - The `predict()` method of the Gaussian Naive Bayes classifier predicts the labels for the test samples based on the learned statistical properties from the training data.
+   - The predicted labels are stored in the variable `y_pred`.
+
+4. ```python
+   accuracy_score(y_test, y_pred)
+   ```
+   - This line calculates the accuracy of the predictions made by the Gaussian Naive Bayes model.
+   - `y_test` contains the true labels corresponding to the test samples.
+   - `y_pred` contains the predicted labels generated by the Gaussian Naive Bayes model.
+   - The `accuracy_score` function from scikit-learn compares the true labels (`y_test`) with the predicted labels (`y_pred`) and computes the accuracy of the classifier.
+   - The accuracy score is returned as the output of this line of code. However, it is not assigned to any variable or printed, so it won't be displayed in the output. To see the accuracy score, you would need to print or assign the result to a variable.
+
+## --------------------------------------------------------------------------------------------------------------
+## Predictive System:-
+* Sure, let's break down each line of code in the `recommendation` function:
+
+```python
+def recommendation(N, P, k, temperature, humidity, ph, rainfall):
+```
+
+- This line defines a function named `recommendation` that takes seven input parameters: `N`, `P`, `k`, `temperature`, `humidity`, `ph`, and `rainfall`. These parameters represent different features related to agriculture.
+
+```python
+    features = np.array([[N, P, k, temperature, humidity, ph, rainfall]])
+```
+
+- This line creates a numpy array `features` containing the input values passed to the function. The input values are organized into a nested list with one inner list representing a single set of features.
+
+```python
+    transformed_features = ms.fit_transform(features)
+```
+
+- This line applies the transformation stored in the `MinMaxScaler` object `ms` to the features array. It scales and transforms the features to the range specified during the fitting process.
+
+```python
+    transformed_features = sc.fit_transform(transformed_features)
+```
+
+- This line applies the transformation stored in the `StandardScaler` object `sc` to the already transformed features. It standardizes the features to have a mean of 0 and a standard deviation of 1.
+
+```python
+    prediction = rfc.predict(transformed_features).reshape(1, -1)
+```
+
+- This line uses the trained RandomForestClassifier model `rfc` to make predictions on the transformed features. The `predict` method predicts the class labels for the input samples. The `reshape(1, -1)` is used to ensure the prediction is reshaped into a 1D array.
+
+```python
+    return prediction[0]
+```
+
+- This line returns the prediction made by the RandomForestClassifier model. Since the prediction is reshaped into a 1D array, `prediction[0]` returns the first element of that array, which represents the predicted class label.
+
+Overall, this function takes agricultural features as input, preprocesses them using MinMaxScaler and StandardScaler, makes predictions using a RandomForestClassifier model, and returns the predicted class label.
+
