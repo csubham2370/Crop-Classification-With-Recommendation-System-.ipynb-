@@ -441,3 +441,59 @@ After executing these lines of code, both `X_train` and `X_test` will be scaled 
 
 After executing these lines of code, both `X_train` and `X_test` will be standardized versions of the original feature matrices, with each feature having a mean of 0 and a standard deviation of 1. Standardization is a common preprocessing step used to ensure that features are centered around zero and have similar scales, which can improve the performance of certain machine learning algorithms.
 * geeks for geeks link: https://www.geeksforgeeks.org/what-is-standardization-in-machine-learning/
+## --------------------------------------------------------------------------------------------------------------
+# Training Models:-
+## Logistic Regression:-
+Logistic Regression is a supervised learning algorithm used for classification tasks. Despite its name, it's primarily used for binary classification problems, where the target variable (output) has two possible classes.
+
+Here's a concise explanation of how Logistic Regression works:
+
+1. **Model Representation**: In Logistic Regression, we have a set of input features (X) and a binary target variable (y). We want to find the relationship between the input features and the probability of the target variable belonging to a particular class.
+
+2. **Hypothesis Function**: The logistic regression model uses a hypothesis function that maps the input features to the probability of the target variable being in the positive class (class 1). The hypothesis function is defined as the logistic function (also known as the sigmoid function):
+
+   ![sigmoid](https://latex.codecogs.com/svg.image?h_\theta(x)&space;=&space;\frac{1}{1&plus;e^{-\theta^Tx}})
+
+   Here, \( h_\theta(x) \) represents the predicted probability that y = 1 for given input features x, and \( \theta \) represents the parameters (coefficients) of the model.
+
+3. **Model Training**: To train the logistic regression model, we use an optimization algorithm (usually gradient descent) to find the optimal parameters \( \theta \) that minimize the cost function. The cost function is typically the log loss function, also known as the binary cross-entropy loss function.
+
+4. **Prediction**: Once the model is trained and we have the optimal parameters \( \theta \), we can use the hypothesis function to make predictions on new data. If \( h_\theta(x) \) is greater than a threshold (usually 0.5), we predict the positive class (y = 1); otherwise, we predict the negative class (y = 0).
+
+5. **Evaluation**: The performance of the logistic regression model can be evaluated using various metrics such as accuracy, precision, recall, F1-score, ROC curve, and AUC.
+
+Here's a Python code example demonstrating how to train and use a logistic regression model for binary classification tasks using scikit-learn:
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Instantiate the logistic regression model
+logistic_model = LogisticRegression()
+
+# Fit the model to the training data
+logistic_model.fit(X_train, y_train)
+
+# Predict on the test data
+y_pred = logistic_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+```
+
+In this example:
+
+- We split the dataset into training and testing sets using `train_test_split`.
+- We instantiate a logistic regression model using `LogisticRegression()`.
+- We train the model on the training data using `fit`.
+- We make predictions on the test data using `predict`.
+- Finally, we evaluate the model's performance using accuracy and classification report.
