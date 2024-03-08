@@ -501,7 +501,8 @@ In this example:
   * Youtube video link: https://www.youtube.com/watch?v=r8OjlgWpAI0
   * web link: https://www.javatpoint.com/logistic-regression-in-machine-learning
   * Youtube video with code example link: https://www.youtube.com/watch?v=zM4VZR0px8E
-    Certainly! Let's break down the provided code snippet step by step:
+    
+    ## Certainly! Let's break down the our code snippet step by step:
 
 1. **Importing Logistic Regression**: 
    ```python
