@@ -535,3 +535,87 @@ In this example:
    - Here, the accuracy of the logistic regression model on the test data is calculated using the `score()` method. The accuracy is then formatted to display two digits after the decimal point using the `.2f` format specifier in the `.format()` method. Finally, the accuracy is printed to the console.
 
 Overall, this code snippet trains a logistic regression model on the training data, makes predictions on the test data, calculates the accuracy of the model on the test data, and prints the accuracy to the console with two digits after the decimal point.
+
+## --------------------------------------------------------------------------------------------------------------
+# Naive Bayes
+To utilize Naive Bayes classifier in scikit-learn, you can follow these steps:
+
+1. **Import the necessary libraries**: First, import the Naive Bayes classifier from scikit-learn, along with any other libraries you'll need.
+
+2. **Instantiate the Naive Bayes model**: Create an instance of the Naive Bayes classifier.
+
+3. **Fit the model to the training data**: Use the `fit()` method to train the model on the training data.
+
+4. **Predict on the test data**: After the model is trained, use the `predict()` method to make predictions on the test data.
+
+5. **Evaluate the model**: Evaluate the performance of the model using appropriate metrics.
+
+Here's an example code to train a Naive Bayes classifier:
+
+```python
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, classification_report
+
+# Instantiate the Naive Bayes classifier
+naive_bayes_model = GaussianNB()
+
+# Fit the model to the training data
+naive_bayes_model.fit(X_train, y_train)
+
+# Predict on the test data
+y_pred = naive_bayes_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print("Naive Bayes accuracy:", accuracy)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+```
+
+In this code:
+
+- We import the Naive Bayes classifier from scikit-learn (`GaussianNB`) and the necessary evaluation metrics (`accuracy_score`, `classification_report`).
+  
+- Then, we create an instance of the Naive Bayes classifier (`naive_bayes_model`).
+  
+- Next, we train the model on the training data using the `fit()` method.
+  
+- After training, we use the trained model to make predictions on the test data using the `predict()` method.
+  
+- Finally, we evaluate the performance of the model using metrics such as accuracy and classification report.
+  
+  * Youtube video link: https://www.youtube.com/watch?v=GBMMtXRiQX0
+  * web link: https://www.javatpoint.com/machine-learning-naive-bayes-classifier
+  * Youtube video with code example link: https://www.youtube.com/watch?v=PPeaRc-r1OI
+ 
+    * The provided code snippet trains a Gaussian Naive Bayes classifier using scikit-learn's `GaussianNB`, makes predictions on the test data, and prints the accuracy of the model. Let's break down the code:
+
+```python
+from sklearn.naive_bayes import GaussianNB
+
+# Instantiate the Gaussian Naive Bayes classifier
+model = GaussianNB()
+
+# Fit the model to the training data
+model.fit(X_train, y_train)
+
+# Predict on the test data
+model.predict(X_test)
+
+# Print the accuracy of the Naive Bayes model on the test data
+print("Naive Bayes accuracy: {:.2f}".format(model.score(X_test, y_test)))
+```
+
+Explanation:
+
+- `from sklearn.naive_bayes import GaussianNB`: This imports the Gaussian Naive Bayes classifier from scikit-learn.
+
+- `model = GaussianNB()`: This instantiates the Gaussian Naive Bayes classifier.
+
+- `model.fit(X_train, y_train)`: This fits the classifier to the training data, where `X_train` is the feature matrix and `y_train` is the target variable.
+
+- `model.predict(X_test)`: This line predicts the target labels for the test data, but the predictions are not being stored or used further.
+
+- `print("Naive Bayes accuracy: {:.2f}".format(model.score(X_test, y_test)))`: This line calculates the accuracy of the model on the test data using the `score()` method, which returns the mean accuracy on the given test data and labels. The accuracy is then formatted to display two digits after the decimal point using the `"{:.2f}"` format specifier in the `format()` method, and it's printed to the console.
