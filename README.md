@@ -994,3 +994,77 @@ def recommendation(N, P, k, temperature, humidity, ph, rainfall):
 
 Overall, this function takes agricultural features as input, preprocesses them using MinMaxScaler and StandardScaler, makes predictions using a RandomForestClassifier model, and returns the predicted class label.
 
+## --------------------------------------------------------------------------------------------------------------
+## Predictive System:-
+* Certainly! Let's go through each line of the code:
+
+```python
+def recommendation(N, P, k, temperature, humidity, ph, rainfall):
+```
+
+- This line defines a function named `recommendation` that takes seven input parameters: `N`, `P`, `k`, `temperature`, `humidity`, `ph`, and `rainfall`. These parameters represent different features related to agriculture.
+
+```python
+    features = np.array([[N, P, k, temperature, humidity, ph, rainfall]])
+```
+
+- This line creates a numpy array `features` containing the input values passed to the function. The input values are organized into a nested list with one inner list representing a single set of features.
+
+```python
+    transformed_features = ms.fit_transform(features)
+```
+
+- This line applies the transformation stored in the `MinMaxScaler` object `ms` to the features array. It scales and transforms the features to the range specified during the fitting process.
+
+```python
+    transformed_features = sc.fit_transform(transformed_features)
+```
+
+- This line applies the transformation stored in the `StandardScaler` object `sc` to the already transformed features. It standardizes the features to have a mean of 0 and a standard deviation of 1.
+
+```python
+    prediction = nb.predict(transformed_features).reshape(1, -1)
+```
+
+- This line uses the trained Gaussian Naive Bayes model `nb` to make predictions on the transformed features. The `predict` method predicts the class labels for the input samples. The `.reshape(1, -1)` is used to ensure the prediction is reshaped into a 2D array with a single row.
+
+```python
+    return prediction[0]
+```
+
+- This line returns the prediction made by the Gaussian Naive Bayes model. Since the prediction is reshaped into a 2D array with a single row, `prediction[0]` returns this row, which represents the predicted class label.
+
+Overall, this function takes agricultural features as input, preprocesses them using MinMaxScaler and StandardScaler, makes predictions using a Gaussian Naive Bayes model, and returns the predicted class label.
+
+## --------------------------------------------------------------------------------------------------------------
+## 
+* Let's explain the code snippet:
+
+1. ```python
+   predict = recommendation(N, P, k, temperature, humidity, ph, rainfall)
+   ```
+   - This line calls the `recommendation` function with the specified agricultural parameters (`N`, `P`, `k`, `temperature`, `humidity`, `ph`, `rainfall`) and stores the result in the variable `predict`. This function returns the predicted crop based on the input parameters.
+
+2. ```python
+   crop_dict = {1: "Rice", 2: "Maize", 3: "Jute", ...}
+   ```
+   - This dictionary `crop_dict` maps the numeric labels of crops to their corresponding names. Each key-value pair represents a crop label and its associated name.
+
+3. ```python
+   if predict[0] in crop_dict:
+   ```
+   - This line checks if the predicted crop label (`predict[0]`) exists as a key in the `crop_dict`.
+
+4. ```python
+   crop = crop_dict[predict[0]]
+   print("{} is a best crop to be cultivated ".format(crop))
+   ```
+   - If the predicted crop label exists in the `crop_dict`, this block of code extracts the corresponding crop name from the dictionary using the predicted label and prints a message indicating that it is the best crop to be cultivated.
+
+5. ```python
+   else:
+       print("Sorry, we are not able to recommend a proper crop for this environment")
+   ```
+   - If the predicted crop label does not exist in the `crop_dict`, this block of code prints a message indicating that a proper crop recommendation could not be made for the given environment.
+
+Overall, this code snippet takes the predicted crop label, maps it to the corresponding crop name using a dictionary, and prints a message indicating the recommended crop based on the predicted label. If the predicted label does not exist in the dictionary, it prints a message indicating that a proper crop recommendation could not be made.
